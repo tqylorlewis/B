@@ -1,0 +1,13 @@
+name: CI Workflow
+
+on:
+  pull_request:
+    branches:
+      -main
+      
+deploy:
+  environment: staging
+  name: 'Deploy to staging'
+  runs-on: ubuntu-latest
+
+  
