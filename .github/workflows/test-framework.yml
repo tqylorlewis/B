@@ -1,0 +1,28 @@
+name: sync_upstream
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+  workflow_dispatch: # on button click
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: config
+        run: |
+          git config --global user.name 'certcc-test'
+          git config --global user.email 'cert+@cert.org'
+      - name: pull
+        run: |
+          # "git checkout master" is unnecessary, already here by default
+          git pull --unshallow 
+          
+      - name: fetch upstream
+        run: |
+          git remote add upstream https://github.com/tqylorlewis/A.git
+          git fetch upstream
+      - name: merge and push
+        run: |
+          git checkout master
+          git merge --no-edit upstream/master
+          git push origin master
