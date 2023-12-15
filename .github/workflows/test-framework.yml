@@ -14,7 +14,7 @@ jobs:
           git config --global user.email 'cert+@cert.org'
       - name: pull
         run: |
-          git pull --unshallow 
+          git pull --unshallow
           
       - name: fetch upstream
         run: |
