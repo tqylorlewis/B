@@ -18,7 +18,7 @@ jobs:
           
       - name: fetch upstream
         run: |
-          git remote add upstream https://github.com/tqylorlewis/A.git
+          git remote add upstream https://github.com/tqylorlewis/A/tree/main
           git fetch upstream
       - name: merge and push
         run: |
